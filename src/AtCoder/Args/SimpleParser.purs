@@ -1,5 +1,6 @@
 module AtCoder.Args.SimpleParser
-  ( run
+  ( Parser
+  , run
   , run'
   , int
   , token
