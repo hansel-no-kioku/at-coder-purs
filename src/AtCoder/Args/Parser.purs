@@ -2,6 +2,7 @@ module AtCoder.Args.Parser
   ( run
   , run'
   , int
+  , digit
   ) where
 
 import Prelude
@@ -29,6 +30,12 @@ int = do
   skipSpaces
   str ← foldMap singleton <$> many1 anyDigit
   pure $ fromMaybe 0 $ fromString str
+
+
+digit ∷ Parser Int
+digit = charToInt <$> anyDigit
+  where
+    charToInt = fromMaybe 0 <<< fromString <<< singleton
 
 
 runImpl ∷ ∀ a. (ParseError → a) → Parser a → String → a
